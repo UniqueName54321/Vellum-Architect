@@ -7,7 +7,7 @@ export default function AdvancedGuide() {
             <div>
                 <h2 className="text-2xl font-bold mb-4">Advanced Features Guide</h2>
                 <p className="text-muted-foreground mb-6">
-                    Learn about the advanced features of The Story Nexus to take your writing to the next level.
+                    Learn about the advanced features of Vellum Architect to take your writing to the next level.
                 </p>
             </div>
 

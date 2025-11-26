@@ -9,7 +9,7 @@ export default function BasicsGuide() {
             <div>
                 <h2 className="text-2xl font-bold mb-4">The Absolute Basics</h2>
                 <p className="text-muted-foreground mb-6">
-                    Welcome to The Story Nexus! This guide will walk you through the essential steps to get started with your AI-powered writing journey.
+                    Welcome to Vellum Architect! This guide will walk you through the essential steps to get started with your AI-powered writing journey.
                 </p>
             </div>
 
@@ -20,7 +20,7 @@ export default function BasicsGuide() {
                         Set Up Your AI Connection
                     </h3>
                     <p>
-                        Before you can use AI features, you'll need to connect to an AI provider. The Story Nexus supports OpenAI, OpenRouter, or a local AI model.
+                        Before you can use AI features, you'll need to connect to an AI provider. Vellum Architect supports OpenAI, OpenRouter, or a local AI model.
                     </p>
                     <div className="flex items-center gap-2 my-2">
                         <Bot className="h-5 w-5 text-primary" />
@@ -111,7 +111,7 @@ export default function BasicsGuide() {
                         Write with AI Assistance
                     </h3>
                     <p>
-                        The Story Nexus editor allows you to write manually or with AI assistance through Scene Beats.
+                        Vellum Architect editor allows you to write manually or with AI assistance through Scene Beats.
                     </p>
                     <div className="bg-muted p-4 rounded-md">
                         <h4 className="font-medium mb-2">Using Scene Beats</h4>
@@ -142,7 +142,7 @@ export default function BasicsGuide() {
                 <div className="mt-8 p-6 border rounded-lg bg-muted/30">
                     <h3 className="text-xl font-semibold mb-4">What's Next?</h3>
                     <p className="mb-4">
-                        These are just the basics to get you started. The Story Nexus offers many more advanced features to enhance your writing experience:
+                        These are just the basics to get you started. Vellum Architect offers many more advanced features to enhance your writing experience:
                     </p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
                         <li>Create a <strong>Lorebook</strong> to manage characters, locations, and other story elements</li>

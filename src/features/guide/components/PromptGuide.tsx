@@ -24,7 +24,7 @@ export default function PromptGuide() {
                 <h2 className="text-2xl font-bold mb-4">Prompt Guide</h2>
                 <p className="text-muted-foreground mb-6">
                     Creating effective prompts is essential for getting the best results from AI generation in your story. This guide will help you understand how to create, customize,
-                    and use prompts effectively in The Story Nexus. There are 6 system prompts automatically created for you, they cannot be deleted or edited but can be cloned.
+                    and use prompts effectively in Vellum Architect. There are 6 system prompts automatically created for you, they cannot be deleted or edited but can be cloned.
                 </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function PromptGuide() {
                     <div className="space-y-4">
                         <h3 className="text-xl font-semibold">Prompt Types</h3>
                         <p>
-                            The Story Nexus supports various types of prompts to help you with different aspects of your writing process:
+                            Vellum Architect supports various types of prompts to help you with different aspects of your writing process:
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
@@ -343,7 +343,7 @@ export default function PromptGuide() {
                         <div className="space-y-4">
                             <h4 className="text-lg font-medium">Common Variables</h4>
                             <p>
-                                The Story Nexus provides a variety of variables you can use in your prompts:
+                                Vellum Architect provides a variety of variables you can use in your prompts:
                             </p>
                             <div className="overflow-x-auto mt-4">
                                 <table className="w-full border-collapse">

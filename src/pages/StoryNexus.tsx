@@ -6,7 +6,7 @@ export default function StoryNexus() {
     return (
         <div className="min-h-screen bg-background flex items-center justify-center p-8">
             <div className="space-y-8 text-center">
-                <h1 className="text-4xl font-bold">The Story Nexus</h1>
+                <h1 className="text-4xl font-bold">Vellum Architect</h1>
 
                 <div className="flex flex-col gap-4 items-center">
                     <Link to="/stories" className="w-full">

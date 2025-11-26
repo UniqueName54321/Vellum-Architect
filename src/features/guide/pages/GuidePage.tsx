@@ -22,12 +22,12 @@ export default function GuidePage() {
                         Back to Home
                     </Button>
                 </Link>
-                <h1 className="text-3xl font-bold ml-4">The Story Nexus Guide</h1>
+                <h1 className="text-3xl font-bold ml-4">Vellum Architect Guide</h1>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Welcome to The Story Nexus</CardTitle>
+                    <CardTitle>Welcome to Vellum Architect</CardTitle>
                     <CardDescription>
                         Your comprehensive guide to using this AI-powered story writing application
                     </CardDescription>

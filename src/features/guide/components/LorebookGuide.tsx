@@ -50,7 +50,7 @@ export default function LorebookGuide() {
                             A Lorebook is a powerful organizational tool that helps you keep track of all the important elements in your story's world. It serves as a central repository for characters, locations, items, events, and other story elements.
                         </p>
                         <p>
-                            The Lorebook in The Story Nexus is designed to not only help you organize your story elements but also to integrate them seamlessly with the AI writing process.
+                            The Lorebook in Vellum Architect is designed to not only help you organize your story elements but also to integrate them seamlessly with the AI writing process.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -436,7 +436,7 @@ export default function LorebookGuide() {
                         <div className="space-y-4">
                             <h4 className="text-lg font-medium">Automatic Tag Matching</h4>
                             <p>
-                                As you write, The Story Nexus automatically scans your text for matches with your Lorebook entries' tags.
+                                As you write, Vellum Architect automatically scans your text for matches with your Lorebook entries' tags.
                             </p>
                             <div className="bg-muted p-4 rounded-md">
                                 <h5 className="font-medium mb-2">How Tag Matching Works:</h5>
