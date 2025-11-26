@@ -1,114 +1,33 @@
-# The Story Nexus
+# Vellum Architect (fork of The Story Nexus)
 
-A powerful AI-driven story writing desktop application built with Tauri, React, and TypeScript.
+**Unofficial fork. Not affiliated with The Story Nexus or its author.**  
+This project adds portable Windows and Linux builds, plus small UX tweaks, while preserving upstream functionality (chapters, concepts/lore, OpenRouter BYOK, etc.).
 
-## Overview
+## Why this fork
+- Portable Windows build (no installer)
+- Native Linux build (AppImage/DEB)
+- Minor UX fixes (status bar, clearer AI endpoint setup)
 
-The Story Nexus is a local-first desktop application designed for writers who want to leverage AI to enhance their creative writing process. It provides a comprehensive environment for creating, organizing, and developing stories with the assistance of AI-powered tools.
+## Install
+**Windows (portable):**
+- Download the ZIP, extract, run `VellumArchitect.exe`.
 
-## Key Features
+**Linux:**
+- Download `.AppImage` → `chmod +x` → run; or install the `.deb` for Debian/Ubuntu.
 
-- **Story Management**: Create and organize your stories with chapters, outlines, and summaries
-- **Rich Text Editor**: Write and edit your stories using a powerful Lexical-based editor
-- **AI Integration**: Generate content using AI models from providers like OpenAI and OpenRouter or use a locally hosted model
-- **Custom Prompts**: Create and manage custom prompts to guide AI generation
-- **Scene Beats Addon to Editor**: Press alt (option for mac) + s in editor to open Scene Beat AI command
-- **Lorebook**: Maintain a database of characters, locations, items, events, and notes for your story
-- **Local-First**: All your data is stored locally using IndexedDB with DexieJS
+## Data & privacy
+All project data is stored locally. AI calls only go to the endpoint you configure (e.g., OpenRouter) using your own key.
 
-## Technology Stack
+## Configure AI (OpenRouter BYOK)
+- Settings → Providers → Custom/OpenAI-compatible  
+- Base URL: `https://openrouter.ai/api/v1/chat/completions`  
+- API Key: `sk-or-v1-...`  
+- Model: e.g., `openrouter/your-model`
 
-- **Frontend**: React, TypeScript, Tailwind CSS, Shadcn UI
-- **State Management**: Zustand
-- **Routing**: React Router v7
-- **Storage**: IndexedDB with DexieJS
-- **Text Editor**: Lexical
-- **Desktop Framework**: Tauri v2
-- **UI Components**: Shadcn UI, Lucide React icons
-- **Notifications**: React Toastify
+## Status
+Actively rebasing on upstream. See CHANGELOG for fork-specific changes.
 
-## Getting Started
-
-### Development
-
-1. Clone the repository
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-
-### Building
-
-To build the application for production:
-
-```
-npm run build
-```
-
-To preview the production build:
-
-```
-npm run preview
-```
-
-To run Tauri commands:
-
-```
-npm run tauri
-```
-
-To run Tauri create debug release:
-
-```
-npm run tauri build -- --debug
-```
-
-To run Tauri create release build:
-
-```
-npm run tauri build
-```
-
-## Screenshots
-
-![App Screenshot](screenshots/Home.jpg)
-![App Screenshot](screenshots/Stories.jpg)
-![App Screenshot](screenshots/Prompts.jpg)
-![App Screenshot](screenshots/Lorebook.jpg)
-![App Screenshot](screenshots/CreateChapter.jpg)
-![App Screenshot](screenshots/Editor.jpg)
-![App Screenshot](screenshots/SceneBeat.jpg)
-![App Screenshot](screenshots/GeneratedProse.jpg)
-
-## Project Structure
-
-- `src/features/` - Main application features (stories, chapters, prompts, ai, lorebook)
-- `src/components/` - Reusable UI components
-- `src/Lexical/` - Text editor implementation
-- `src/types/` - TypeScript type definitions
-- `src/services/` - Application services
-- `src/lib/` - Utility functions and helpers
-- `src/hooks/` - Custom React hooks
-- `src/pages/` - Application pages
-
-## Prompts export/import
-
-You can export and import prompts from the Prompts Manager UI.
-
--- Export: Click the export button to download a JSON file containing all non-system prompts (system prompts are excluded). The file format is:
-
-```
-{
-   "version": "1.0",
-   "type": "prompts",
-   "prompts": [ /* array of prompt objects */ ]
-}
-```
-
--- Import: Click the import button and choose a JSON file in the format above. Imported prompts are validated (messages must be an array of `{role, content}` objects). Imported prompts are always created as non-system prompts (so you can edit or delete them). If a prompt name already exists it will get a unique ` (Imported)` suffix. New IDs and `createdAt` timestamps are generated for imported prompts.
-
-If an imported prompt fails validation it will be skipped and a warning will be logged to the console.
+## Credits & License
+Based on **The Story Nexus** (AGPL-3.0).  
+© Original authors. This fork © 2025 You. Licensed **AGPL-3.0**.  
+Source for binaries is available in this repository.
