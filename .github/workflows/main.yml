@@ -1,0 +1,103 @@
+name: build-desktop
+
+on:
+  push:
+    tags:
+      - "app-v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            args: ""
+          - os: ubuntu-22.04
+            args: ""
+          - os: macos-latest
+            args: "--target x86_64-apple-darwin"
+          - os: macos-latest
+            args: "--target aarch64-apple-darwin"
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Linux GUI deps for WebKitGTK (required by Tauri on Linux)
+      - name: Install Linux deps
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.os == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Install JS deps
+        run: npm ci
+
+      # Build app bundles (does NOT need to create a GitHub Release)
+      - name: Build (Tauri)
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: ${{ matrix.args }}
+          # omit tagName/releaseName to just build locally in the runner
+
+      # ----- Collect artifacts -----
+
+      # Windows: upload installer (MSI/NSIS) AND a "portable" zip of exe + dlls
+      - name: Pack Windows portable
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory portwin -Force | Out-Null
+          Copy-Item src-tauri/target/release/*.exe -Destination portwin -Force
+          Get-ChildItem src-tauri/target/release/*.dll -ErrorAction SilentlyContinue | Copy-Item -Destination portwin -Force
+          Compress-Archive -Path portwin\* -DestinationPath portwin.zip
+      - name: Upload Windows installer(s)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: InstallerWin
+          path: |
+            src-tauri/target/release/bundle/**/*.msi
+            src-tauri/target/release/bundle/**/*setup*.exe
+          if-no-files-found: ignore
+      - name: Upload Windows portable
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PortWin
+          path: portwin.zip
+
+      # Linux: AppImage / deb
+      - name: Upload Linux bundles
+        if: startsWith(matrix.os, 'ubuntu')
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux
+          path: |
+            src-tauri/target/release/bundle/**/*.AppImage
+            src-tauri/target/release/bundle/**/*.deb
+          if-no-files-found: ignore
+
+      # macOS: DMGs per-arch
+      - name: Upload macOS bundles
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mac-${{ matrix.args == '--target aarch64-apple-darwin' && 'arm64' || 'x64' }}
+          path: src-tauri/target/release/bundle/**/*.dmg
+          if-no-files-found: ignore
